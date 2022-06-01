@@ -9,6 +9,7 @@ import Page from "../components/page";
 
 const Subscribe = () => {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [message, setMessage] = useState<IMessage | undefined>(undefined);
 
   const onSubmit = (event: FormEvent) => {
@@ -18,7 +19,7 @@ const Subscribe = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, name }),
     })
       .then((res) => res.json())
       .then((json) => {
@@ -35,6 +36,7 @@ const Subscribe = () => {
           });
         }
         setEmail("");
+        setName("");
       })
       .catch((error) => console.log({ error }));
   };
@@ -43,7 +45,8 @@ const Subscribe = () => {
     <Page>
       <Form onSubmit={onSubmit}>
         <Title>Newsletter</Title>
-        <Input label="Email" value={email} onChange={setEmail} />
+        <Input type="email" label="Email" value={email} onChange={setEmail} />
+        <Input label="Name" value={name} onChange={setName} />
         <Button className="mb-10 mx-auto mt-5">Subscribe</Button>
       </Form>
       <Popup message={message} />

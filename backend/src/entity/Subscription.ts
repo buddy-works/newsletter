@@ -7,4 +7,7 @@ export class Subscription {
 
   @Column()
   email: string;
+
+  @Column({ default: "" })
+  name: string;
 }

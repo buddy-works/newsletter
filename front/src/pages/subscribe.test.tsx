@@ -8,6 +8,7 @@ describe("Subscribe page", () => {
 
     expect(screen.getByText("Newsletter")).toBeDefined();
     expect(screen.getByText("Email:")).toBeDefined();
+    expect(screen.getByText("Name:")).toBeDefined();
     expect(screen.getByText("Subscribe")).toBeDefined();
   });
 });
